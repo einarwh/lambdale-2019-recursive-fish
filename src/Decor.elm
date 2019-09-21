@@ -1,4 +1,4 @@
-module Decor exposing (render)
+module Decor exposing (draw)
 
 import Box exposing (Box)
 import Picture exposing (Rendering)
@@ -24,8 +24,8 @@ decorate svg =
   in 
     div [] [ body, footer ]
 
-render : List Box -> Rendering -> Html msg 
-render boxes rendering = 
+draw : List Box -> Rendering -> Html msg 
+draw boxes rendering = 
   let 
     bounds = (500, 500)
   in 

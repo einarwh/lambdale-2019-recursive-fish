@@ -25,12 +25,6 @@ tossBox { a, b, c } =
   , b = scale 0.5 (add b c)
   , c = scale 0.5 (sub c b) }
 
--- tossedBoxes : gather intermediate tossed boxes
-tossedBoxes : Int -> Box -> List Box
-tossedBoxes n box = 
-  if n < 1 then [ box ]
-  else box :: tossedBoxes (n - 1) (tossBox box)
-
 moveVertically : Float -> Box -> Box
 moveVertically f { a, b, c } =
   { a = add a (scale f c) 
@@ -70,36 +64,3 @@ splitHorizontally f box =
     right = box |> moveHorizontally f |> scaleHorizontally (1 - f)
   in
     (left, right)
-
-sideBoxes : Int -> Box -> List Box
-sideBoxes n box =
-  if n < 1 then [ box ]
-  else
-    let
-      (top, bot) = splitVertically 0.5 box
-      (nw, ne) = splitHorizontally 0.5 top
-      (sw, se) = splitHorizontally 0.5 bot
-    in
-      sideBoxes (n - 1) nw ++ sideBoxes (n - 1) ne ++ [sw, se]
-
-westSideBoxes : Int -> Box -> List Box
-westSideBoxes n box =
-  if n < 1 then [ box ]
-  else
-    let
-      (top, bot) = splitVertically 0.5 box
-      (nw, ne) = splitHorizontally 0.5 top
-      (sw, se) = splitHorizontally 0.5 bot
-    in
-      westSideBoxes (n - 1) nw ++ westSideBoxes (n - 1) sw ++ [ne, se]
-
-cornerBoxes : Int -> Box -> List Box
-cornerBoxes n box =
-  if n < 1 then [ box ]
-  else
-    let
-      (top, bot) = splitVertically 0.5 box
-      (nw, ne) = splitHorizontally 0.5 top
-      (sw, se) = splitHorizontally 0.5 bot
-    in
-      cornerBoxes (n - 1) nw ++ sideBoxes (n - 1) ne ++ westSideBoxes (n - 1) sw ++ [se]

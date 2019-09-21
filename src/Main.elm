@@ -1,13 +1,15 @@
 module Main exposing (main)
 
 import Box exposing (..)
+import Gather exposing (gatherBoxes)
+import Recursion exposing (sideBoxes, cornerBoxes)
 import Picture exposing (..)
 import Letter exposing (..)
-import Figure exposing (..)
+import Figure exposing (george)
 import Fishy exposing (fishShapes)
 import Fitting exposing (createPicture)
 import Html exposing (Html)
-import Decor exposing (render)
+import Decor exposing (draw)
 
 main : Html msg
 main = 
@@ -17,8 +19,8 @@ main =
           , c = { x = 0.0, y = 300.0 } }
     fish = createPicture fishShapes
     f = createPicture fLetter
-    g = createPicture george
+    g = createPicture george 
   in     
     box |> squareLimit 4 fish 
-        |> render []
- 
+        |> draw []
+
