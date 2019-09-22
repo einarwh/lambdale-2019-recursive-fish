@@ -6,6 +6,7 @@ import Recursion exposing (sideBoxes, cornerBoxes)
 import Picture exposing (..)
 import Letter exposing (..)
 import Figure exposing (george)
+import Ale exposing (ale)
 import Fishy exposing (fishShapes)
 import Fitting exposing (createPicture)
 import Html exposing (Html)
@@ -20,7 +21,8 @@ main =
     fish = createPicture fishShapes
     f = createPicture fLetter
     g = createPicture george 
+    a = createPicture ale 
   in     
-    box |> squareLimit 4 fish 
-        |> draw []
+    box |> squareLimit 4 fish
+        |> draw [ ]
 

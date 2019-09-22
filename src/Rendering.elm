@@ -9,8 +9,8 @@ import Mirror exposing (..)
 import Svg exposing (..)
 import Svg.Attributes exposing (..)
 
-useArrows = False
-useDottedLine = False
+useArrows = True
+useDottedLine = True
 dottedLineColor = "grey"
 solidLineColor = "red"
 

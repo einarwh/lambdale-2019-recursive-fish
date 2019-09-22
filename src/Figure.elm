@@ -1,4 +1,4 @@
-module Figure exposing (..)
+module Figure exposing (george)
 
 import Shape exposing (..)
 
@@ -38,4 +38,3 @@ george =
   , Polyline { pts = pts3 }
   , Polyline { pts = pts4 }
   , Polyline { pts = pts5 } ]
-
